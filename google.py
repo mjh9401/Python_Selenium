@@ -37,6 +37,7 @@ for image in images:
         image.click()
         time.sleep(2)
         imgUrl = driver.find_element(By.XPATH,"/html/body/div[2]/c-wiz/div[3]/div[2]/div[3]/div/div/div[3]/div[2]/c-wiz/div/div[1]/div[1]/div[3]/div/a/img").get_attribute("src")
+        # 이미지 파일 저장
         urllib.request.urlretrieve(imgUrl, str(count)+".jpg")
         count += 1
     except:
