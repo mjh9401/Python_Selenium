@@ -32,7 +32,7 @@ time.sleep(0.5)
 # ㄱ~ㅎ 선택 후 도로명 선택
 driver.find_element(By.XPATH,'//*[@id="initialword"]/option[1]').click()
 time.sleep(0.5)
-driver.find_element(By.XPATH,'//*[@id="road"]/option[1]').click()
+driver.find_element(By.XPATH,'//*[@id="road"]/option[2]').click()
 time.sleep(0.5)
 
 cnt = 0
@@ -51,19 +51,55 @@ while True :
         driver.find_element(By.XPATH,'//*[@id="apt"]/option').click()
         time.sleep(0.5)
 
-    elif int(danji_len) >= 2:
+    elif int(danji_len) > 1:
         for i in range(int(danji_len)):
             driver.find_element(By.XPATH,'//*[@id="apt"]/option['+str(i+1)+']').click()
+            time.sleep(2)
 
             # 동 선택
             dong =driver.find_element(By.ID,'dong')
             dong_len = dong.get_attribute("length")
+
             if int(dong_len) == 1:
                 driver.find_element(By.XPATH,'//*[@id="dong"]/option').click()
-            elif int(dong_len) >= 2:
+                time.sleep(2)
+
+                # 호 선택
+                ho = driver.find_element(By.ID,'ho')
+                ho_len= ho.get_attribute("length")
+
+                for i in range(int(ho_len)):
+                    try:
+                        driver.find_element(By.XPATH,'//*[@id="ho"]/option['+str(i+1)+']').click()
+                        time.sleep(2)
+
+                        # 열람하기 클릭
+                        driver.find_element(By.CLASS_NAME,'btn-src3').click()
+                        time.sleep(2)
+
+                    except:
+                        pass
+
+                    # 2022년 공시지가 담기
+                    publicInfoTag = driver.find_element(By.XPATH,'//*[@id="dataList"]/tr[1]')
+                    publicInfo = publicInfoTag.get_attribute('outerText').replace('\t', " ").replace('\n',"")
+                    publicInfoList = publicInfo.split(' ')
+
+                    gongSiGiJun = publicInfoList[0]
+                    danJiMyung = publicInfoList[1]
+                    dongMyung = publicInfoList[2]
+                    hoMyung = publicInfoList[3]
+                    junyoungMyunJuk= publicInfoList[4]
+                    gongDongJuTekGagyuk = publicInfoList[5]
+
+                    sheet.append([gongSiGiJun,danJiMyung,dongMyung,hoMyung,junyoungMyunJuk,gongDongJuTekGagyuk])  # 엑셀시트에 공시지가 정보 첨부
+
+                cnt = cnt + 1    
+            
+            elif int(dong_len) > 1:
                 for i in range(int(dong_len)):
                     driver.find_element(By.XPATH,'//*[@id="dong"]/option['+str(i+1)+']').click()
-                    time.sleep(0.5)
+                    time.sleep(2)
 
                     # 호 선택
                     ho = driver.find_element(By.ID,'ho')
