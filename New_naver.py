@@ -11,7 +11,7 @@ xlsx = Workbook()
 query = input('검색 키워드 입력 : ')
 time.sleep(3)
 
-# 엑셀 검색키워드 이름으로 시트 생성 후 title URL 첫 행에 만들기
+# 엑셀 검색 키워드 이름으로 시트 생성 후 title URL 첫 행에 만들기
 xlsx.create_sheet(query)
 sheet = xlsx[query]
 sheet.append(['title','URL'])
