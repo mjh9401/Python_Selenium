@@ -13,6 +13,7 @@ ws.append([1, 2, 3])
 # Python types will automatically be converted
 import datetime
 ws['A2'] = datetime.datetime.now()
+print(ws.max_row)
 
 # Save the file
 wb.save("sample.xlsx")
