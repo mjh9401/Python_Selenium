@@ -11,7 +11,6 @@ driver.get("https://www.realtyprice.kr/notice/town/nfSiteLink.htm")
 # 기존 엑셀 파일 가져오기
 wb =load_workbook(filename='부동산공시가격.xlsx')
 
-
 # 엑셀 시트 선택
 sheet = wb['강남구']
 

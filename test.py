@@ -1,4 +1,3 @@
-from posixpath import split
 
 
 # address = '서울특별시 강남구 가로수길 55-6(강남구 신사동   533-15)'
@@ -10,10 +9,10 @@ from posixpath import split
 nubmer = '1603'
 # print(len(nubmer))  # 문자열 구하기
 
-if len(nubmer) == 3:
-    print(nubmer[:1])
-elif len(nubmer) ==4:
-    print(nubmer[:2])       
+# if len(nubmer) == 3:
+#     print(nubmer[:1])
+# elif len(nubmer) ==4:
+#     print(nubmer[:2])       
 
 # print(nubmer[:1])
 
