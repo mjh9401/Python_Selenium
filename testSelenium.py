@@ -97,8 +97,6 @@ time.sleep(2)
 driver.find_element(By.XPATH,'//*[@id="road"]/option[8]').click()
 time.sleep(2)
 
-
-
 cnt = 0
 
 while True :   

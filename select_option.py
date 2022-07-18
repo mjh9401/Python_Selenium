@@ -26,7 +26,7 @@ time.sleep(4)
 # ㄱ~ㅎ 선택 후 도로명 선택
 driver.find_element(By.XPATH,'//*[@id="initialword"]/option[1]').click()
 time.sleep(4)
-driver.find_element(By.XPATH,'//*[@id="road"]/option[8]').click()
+driver.find_element(By.XPATH,'//*[@id="road"]/option[23]').click()
 time.sleep(4)
 
 cnt = 0
