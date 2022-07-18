@@ -25,16 +25,16 @@ time.sleep(2)
 # ㄱ~ㅎ 선택 후 도로명 선택
 driver.find_element(By.XPATH,'//*[@id="initialword"]/option[1]').click()
 time.sleep(2)
-driver.find_element(By.XPATH,'//*[@id="road"]/option[20]').click()
+driver.find_element(By.XPATH,'//*[@id="road"]/option[26]').click()
 time.sleep(2)
 
 
 # 단지명 선택
-driver.find_element(By.XPATH,'//*[@id="apt"]/option[7]').click()
+driver.find_element(By.XPATH,'//*[@id="apt"]/option[6]').click()
 time.sleep(2)
 
 # 동 선택
-driver.find_element(By.XPATH,'//*[@id="dong"]/option[6]').click()
+driver.find_element(By.XPATH,'//*[@id="dong"]/option').click()
 time.sleep(2)
 
 
@@ -42,7 +42,7 @@ time.sleep(2)
 ho = driver.find_element(By.ID,'ho')
 ho_len= ho.get_attribute("length")
 
-for i in range(38,87):
+for i in range(12,15):
     try:
         driver.find_element(By.XPATH,'//*[@id="ho"]/option['+str(i+1)+']').click()
         time.sleep(2)
