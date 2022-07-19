@@ -1,3 +1,4 @@
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -10,6 +11,7 @@ driver.get("https://www.realtyprice.kr/notice/town/nfSiteLink.htm")
 
 # 기존 엑셀 파일 가져오기
 wb =load_workbook(filename='부동산공시가격.xlsx')
+
 
 # 엑셀 시트 선택
 sheet = wb['강남구']
@@ -25,12 +27,12 @@ time.sleep(2)
 # ㄱ~ㅎ 선택 후 도로명 선택
 driver.find_element(By.XPATH,'//*[@id="initialword"]/option[1]').click()
 time.sleep(2)
-driver.find_element(By.XPATH,'//*[@id="road"]/option[26]').click()
+driver.find_element(By.XPATH,'//*[@id="road"]/option[31]').click()
 time.sleep(2)
 
 
 # 단지명 선택
-driver.find_element(By.XPATH,'//*[@id="apt"]/option[6]').click()
+driver.find_element(By.XPATH,'//*[@id="apt"]/option[5]').click()
 time.sleep(2)
 
 # 동 선택
@@ -42,7 +44,7 @@ time.sleep(2)
 ho = driver.find_element(By.ID,'ho')
 ho_len= ho.get_attribute("length")
 
-for i in range(12,15):
+for i in range(9,17):
     try:
         driver.find_element(By.XPATH,'//*[@id="ho"]/option['+str(i+1)+']').click()
         time.sleep(2)
@@ -69,7 +71,8 @@ for i in range(12,15):
     hoMyung = publicInfoList[3]
     junyoungMyunJuk= publicInfoList[4]
     gongDongJuTekGagyuk = publicInfoList[5]
-                     
+    now = datetime.now()
+
     chuengSu = hoMyung
     if len(hoMyung) == 3:
         chuengSu = hoMyung[:1]
@@ -78,7 +81,7 @@ for i in range(12,15):
     print(len(chuengSu))
     print(chuengSu)
 
-    sheet.append([adress,gongSiGiJun,danJiMyung,dongMyung,hoMyung,chuengSu,junyoungMyunJuk,gongDongJuTekGagyuk])  # 엑셀시트에 공시지가 정보 첨부
+    sheet.append([adress,gongSiGiJun,danJiMyung,dongMyung,hoMyung,chuengSu,junyoungMyunJuk,gongDongJuTekGagyuk,now.date()])  # 엑셀시트에 공시지가 정보 첨부
     wb.save('부동산공시가격.xlsx')
 
 driver.quit()
